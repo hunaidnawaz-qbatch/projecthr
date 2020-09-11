@@ -1,0 +1,23 @@
+<div class='nested-fields'>
+    <div class="field">
+		  <br>
+      <%= f.label :serial_number %>
+      <%= f.text_field :serial_number %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <div>
+
+      <br>
+      <% if f.object.device_image.attached? %>
+        <%= image_tag (url_for(f.object.device_image.variant(resize: "150x150"))) %>
+      <%end%>
+
+      </div>
+      <%= f.label :images %>
+      <%= f.file_field :device_image, accept: 'image/png,image/gif,image/jpeg'  %><br>
+      <small><i>Only Select png or jpeg Files</i></small>
+    </div>
+    <%= link_to_remove_association "Remove Device", f %>
+		<%= f.label :"-------------------------------" %>
+  </div>

@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<% if @user.image.attached? %>
+  <%= image_tag (@user.image.variant(resize: "150x150")) %><br>
+<% end %>
+
+<% @user.devices.each do |device| %>
+  <%= device.serial_number %><br>
+  <%= device.name %><br>
+
+  <% if device.device_image.attached? %>
+   <%= image_tag (device.device_image.variant(resize: "150x150")) %><br>
+  <% end %>
+<% end %>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
